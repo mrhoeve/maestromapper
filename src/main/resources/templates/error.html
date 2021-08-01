@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Er is een fout opgetreden</title>
+    <style th:inline="text">
+        body, html {
+            height: 100%;
+            margin: 0;
+            font: 400 15px/1.8 "Lato", sans-serif;
+            color: #777;
+        }
+
+        .bgimg {
+            /* The image used */
+            background-image: url([[@{/images/world_gray.png}]]);
+
+            /* Full height */
+            height: 100%;
+
+            position: relative;
+            opacity: 0.65;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .caption {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            color: #000;
+        }
+
+        .caption span.border {
+            background-color: #111;
+            color: #fff;
+            padding: 18px;
+            font-size: 25px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+<div class="bgimg">
+    <div class="caption">
+        <span class="border">MAESTROMAPPER</span><br><br><br><br><br>
+        <span class="border">Er is een fout opgetreden. Probeer het later nogmaals.</span><br><br><br><br><br>
+        <span class="border" th:text="${error}"/>
+    </div>
+</div>
+
+</body>
+</html>

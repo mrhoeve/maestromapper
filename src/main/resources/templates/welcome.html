@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="none">
+    <meta name="GENERATOR" content="Created by Mart Roumen, enhanced by Marc Hoeve">
+
+    <title>Worldwide-service</title>
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/leaflet/leaflet.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/font-awesome/css/all.css}"/>
+
+    <script th:src="@{webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{webjars/leaflet/leaflet.js}"></script>
+    <script th:src="@{webjars/togeojson/togeojson.js}"></script>
+    <script th:src="@{/js/maestromapper.js}"></script>
+
+</head>
+
+<body id="site">
+<header class="copyright" th:inline="text">&copy; Rebuild by Marc Hoeve and Mart Roumen 2017 - [[${#dates.year(#dates.createNow())}]]</header>
+
+<div id="main" class="mainNonFloating">
+    <div id="searchBar">
+        <div id="searchButton"><i class="fas fa-search-location"></i> Search</div>
+        <div id="closer" class="floatingSearchBarCloser hide">X</div>
+        <div id="searchDiv" class="hide">
+            <p><input type="checkbox" id="stickySearchBar" value="unchecked">Make searchbar sticky</p>
+            <form name="findPlaceForm" onsubmit="return performSearch();">
+                <p>Fuzzy-G<input type="text" name="q" value="">
+                    <br>
+                    <select size="1" name="cc">
+                        <option value="">All countries</option>
+                        <option value="">-----------------</option>
+                        <option th:each="country : ${countries}" th:value="${country.code}" th:text="${country.name}"></option>
+                    </select>
+                    <br/>
+                    <input type="checkbox" id="showEarth" value="unchecked">Download KML for Google Earth
+                    <br/>
+                    <input type="submit" value="JRC Search All Features ">
+                </p>
+            </form>
+        </div>
+        <div id="message" class="inSearchBar hide"></div>
+        <p id="information" class="hide">Information on specific point:</p>
+        <div id="map_info" class="floatingMapInfo">
+        </div>
+    </div>
+    <div id="map_canvas" class="site-content"></div>
+</div>
+
+<div id="goToAndCurrentPosition">
+    <div>
+        <label>Current position:</label>
+        <input type="text" id="curpos" readonly/>
+    </div>
+    <div>
+        <label>Go to lat&#47;lng</label>
+        <input id="latlng" type="text">
+        <input type="button" id="searchLatLng" value="Go!" onclick="coderLatLng()">
+    </div>
+    <div><input type="button" id="button_Clear" value="Clear all markers" onclick="reset()"></div>
+</div>
+
+<nav class="topnav" id="myTopnav">
+    <a href="mailto:info@maestromapper.com" target="_self"><i class="fas fa-info-circle"></i> email</a>
+    <a href="http://geonames.org" target="_top"><i class="fas fa-atlas"></i> geonames</a>
+    <a href="http://geonames.nga.mil/namesgaz" target="_top"><i class="fas fa-atlas"></i> NGA-geoname</a>
+    <a href="http://gis.maestromapper.com/pdf-gaz.htm" target="_self"><i class="fas fa-map-marked-alt"></i> pdf-gazetteers</a>
+</nav>
+
+</body>
+</html>
