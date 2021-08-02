@@ -48,6 +48,6 @@ class MapsController(private val mapInfoRepository: MapInfoRepository) {
             logger.error("Exception occurred when retrieving available maps", e)
         }
         MDC.clear()
-        return ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        return ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
     }
 }
