@@ -1,4 +1,4 @@
-FROM postgres:13.3-alpine
+FROM postgres:14.3-alpine
 
 # Variables needed at runtime to configure postgres and run the initdb scripts
 ENV POSTGRES_DB ''

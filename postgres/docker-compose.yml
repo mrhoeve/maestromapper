@@ -26,6 +26,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: postgres_maestro
     ports:
       - 5432:5432
     # You can put all of your env vars in env_file, but you may also only
