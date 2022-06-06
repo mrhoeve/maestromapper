@@ -2,9 +2,6 @@ package com.maestromapper.controller
 
 import com.maestromapper.model.MapInfo
 import com.maestromapper.repository.MapInfoRepository
-import io.swagger.annotations.ApiOperation
-import io.swagger.annotations.ApiResponse
-import io.swagger.annotations.ApiResponses
 import net.logstash.logback.argument.StructuredArguments
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -24,14 +21,6 @@ class MapsController(private val mapInfoRepository: MapInfoRepository) {
     var logger: Logger = LoggerFactory.getLogger(MapsController::class.java)
 
     @RequestMapping(method = [RequestMethod.GET], produces = [MediaType.APPLICATION_JSON_VALUE])
-    @ApiOperation(value = "Returns the available maps")
-    @ApiResponses(
-        value = [
-            ApiResponse(code = 200, message = "OK"),
-            ApiResponse(code = 401, message = "Unauthorized"),
-            ApiResponse(code = 500, message = "Internal server error"),
-        ]
-    )
     fun retrieveAllMaps(request: HttpServletRequest): ResponseEntity<List<MapInfo>?> {
         MDC.put("user", request.userPrincipal.name)
         try {

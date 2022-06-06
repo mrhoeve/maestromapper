@@ -9,11 +9,9 @@ import org.slf4j.MDC
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
-import springfox.documentation.annotations.ApiIgnore
 import javax.servlet.http.HttpServletRequest
 
 @Controller
-@ApiIgnore
 class SiteController(private val countryRepository: CountryRepository) {
     var logger: Logger = LoggerFactory.getLogger(SiteController::class.java)
 
