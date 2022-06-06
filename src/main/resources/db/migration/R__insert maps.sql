@@ -7,4 +7,3 @@ insert into maps (Url, Attribution, Name, IsDefault)
 values ('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', 'Map: <a href="http://viewfinderpanoramas.org">SRTM</a>', 'OpenTopoMap', true);
 insert into maps (Url, Attribution, Name, IsDefault)
 values ('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', 'Map: <a href="http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/">MR</a>', 'Worldimage', false);
-ó
