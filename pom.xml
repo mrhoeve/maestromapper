@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version>
+        <version>2.7.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.mrhoeve</groupId>
@@ -15,7 +15,7 @@
     <description>maestromapper</description>
     <properties>
         <java.version>11</java.version>
-        <kotlin.version>1.5.21</kotlin.version>
+        <kotlin.version>1.6.21</kotlin.version>
     </properties>
     <dependencies>
         <!-- Spring Boot, database, Flyway and Kotlin -->
@@ -90,7 +90,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>leaflet</artifactId>
-            <version>1.7.1</version>
+            <version>1.8.0</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
