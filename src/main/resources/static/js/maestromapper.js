@@ -191,7 +191,7 @@ $(async function () {
 
 // Define all the available maps
 async function addAvailableMaps() {
-    let restResult = await fetch('/api/maps');
+    let restResult = await fetch('api/maps');
     if(restResult.ok) {
         let availableMaps = await restResult.json();
         if(availableMaps.length !== 0) {

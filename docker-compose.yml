@@ -1,0 +1,18 @@
+#  To run in the foreground (easiest)
+#  > docker-compose up
+#
+#  To run in the background and tail the logs
+#  > docker-compose up -d
+#  > docker-compose logs -f
+#
+#  Subsequent builds (if you change Dockerfile)
+#  > docker-compose build
+#
+version: "3.7"
+services:
+  wrp:
+    image: mrhoeve/maestromapper:latest
+    container_name: maestromapper
+    ports:
+      - 8080:8080
+
