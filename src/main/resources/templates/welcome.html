@@ -31,7 +31,7 @@
             <form name="findPlaceForm" onsubmit="return performSearch();">
                 <p>Fuzzy-G<input type="text" name="q" value="">
                     <br>
-                    <select size="1" name="cc">
+                    <select size="1" name="cc" style="max-width: 100%">
                         <option value="">All countries</option>
                         <option value="">-----------------</option>
                         <option th:each="country : ${countries}" th:value="${country.code}" th:text="${country.name}"></option>

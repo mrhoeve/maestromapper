@@ -111,6 +111,9 @@ $(async function () {
     // Register mouse movements so we can display the current lat/lon
     L.control.mousePosition().addTo(map);
 
+    // Register scale to the map
+    L.control.scale().addTo(map);
+
     // // Add fileLayer control so we can import json files
     // L.Control.FileLayerLoad.LABEL = '<img class="icon" src="./images/folder.svg" alt="file icon"/>';
     // L.Control.fileLayerLoad({
@@ -145,7 +148,7 @@ $(async function () {
 
     // // Add new marker for the center
     let iconCenterIcon = L.icon({
-        iconUrl: path_to_site + '..\\images\\5star.gif'
+        iconUrl: path_to_site + '\\images\\5star.gif'
     });
     // Place the icon on the map
     let centerIcon = L.marker(map.getCenter(), {icon: iconCenterIcon}).addTo(map);
@@ -201,6 +204,9 @@ async function addAvailableMaps() {
                 if(availableMap.minZoom != null && availableMap.maxZoom != null ) {
                     options["minZoom"] = availableMap.minZoom;
                     options["maxZoom"] = availableMap.maxZoom;
+                } else {
+                    options["minZoom"] = 0;
+                    options["maxZoom"] = 18;
                 }
                 if(availableMap.boundX1 != null && availableMap.boundY1 != null && availableMap.boundX2 != null && availableMap.boundY2 != null) {
                     options["bounds"] = [[availableMap.boundX1, availableMap.boundY1], [availableMap.boundX2, availableMap.boundY2]];
@@ -470,7 +476,7 @@ function reset() {
 // PERFORMS THE SEARCH
 function performSearch() {
     writeMessage('', true);
-    writeMessage('<p>Searching for ' + document.findPlaceForm.q.value + ' in ' + '</p><p><img src="./images/fuzzyg.gif" /> and <img src="./images/mysql.png" /></p>', false);
+    writeMessage('<p class="center">Searching for ' + document.findPlaceForm.q.value + ' in ' + '</p><img src="./images/postgresql.png" class="center-image" />', false);
 
     // Build countrypart of URL
     let countryquery = document.findPlaceForm.cc.options[document.findPlaceForm.cc.selectedIndex].value;
@@ -482,7 +488,7 @@ function performSearch() {
     }
 
     // Call performsearch.php
-    let url = path_to_site + "/performsearch.php?q=" + document.findPlaceForm.q.value + countryquery;
+    let url = path_to_site + "/api/search?q=" + document.findPlaceForm.q.value + countryquery;
     loadAndShowXML(url);
     return false;
 }
@@ -492,6 +498,7 @@ function loadAndShowXML(url) {
     let xml = loadXMLDoc(url);
     let xsl = loadXMLDoc(path_to_site + "/xsl/layout.xsl");
 
+    writeMessage('', true);
     // code for IE
     if (isIE) {
         document.getElementById("message").innerHTML = xml.transformNode(xsl);
@@ -553,11 +560,11 @@ function handleXSLClick(fullname, lat, lng) {
 }
 
 // Handles the RS! click in the XML
-function performRadiusSearch(lat, lng, cc) {
+function performRadiusSearch(lat, lng) {
     writeMessage('', true);
-    writeMessage('<p>Perform radius search on lat/lng ' + lat + ',' + lng + '<br />using local <img src="./images/mysql.png" /></p>', false);
+    writeMessage('<p class="center">Perform radius search on lat/lng ' + lat + ',' + lng + '</p><img src="./images/postgresql.png" class="center-image" />', false);
 
-    let url = path_to_site + "/radiussearch.php?lat=" + lat + "&lng=" + lng + "&cc=" + cc;
+    let url = path_to_site + "/api/radiussearch?lat=" + lat + "&lng=" + lng;
     loadAndShowXML(url);
 }
 
