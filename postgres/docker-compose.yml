@@ -37,8 +37,3 @@ services:
     # on your disk. This will write to a local directory called 'db-data'
     # volumes:
     #   - ./db-data:/var/lib/postgresql/data
-  maestromapper:
-    image: mrhoeve/maestromapper:latest
-    container_name: maestromapper
-    ports:
-      - 8080:8080
